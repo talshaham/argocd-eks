@@ -1,0 +1,16 @@
+appDeployment:
+  containerAppDeployment:
+    image:
+      repository: talshaham/app-weather
+      tag: "65"
+  replicas: 2
+kubernetesClusterDomain: cluster.local
+serviceApp:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 5000
+  type: ClusterIP
+
+ingress:
+  host: afe5f1654dccb41ba94eca0f7bb590c0-835361327.eu-north-1.elb.amazonaws.com

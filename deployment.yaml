@@ -26,8 +26,10 @@ metadata:
 spec:
   selector:
     app: app-deployment
-  type: NodePort
   ports:
-    - name: http
-      port: 80
-      targetPort: 5000
+  - name: http
+    port: 80
+    targetPort: 5000
+
+
+
