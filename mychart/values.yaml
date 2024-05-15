@@ -5,10 +5,10 @@
 replicaCount: 4
 
 image:
-  repository: talshaham/jenkins
+  repository: talshaham/app-weather
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "blue"
+  tag: "11111"
 
 imagePullSecrets: []
 nameOverride: ""

@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: blue
-data:
-  BG_COLOR: "#b0e0e6"
