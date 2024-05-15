@@ -9,5 +9,3 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
-  selector:
-    {{- include "mychart.selectorLabels" . | nindent 4 }}
