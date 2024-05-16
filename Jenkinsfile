@@ -1,7 +1,7 @@
 pipeline {
     agent any 
     environment {     
-      REPLICA= 1
+      REPLICA= 10
     }
 
     stages {
@@ -16,7 +16,7 @@ pipeline {
         stage('change number of replicas') {
             steps {
                 // sh 'helm uninstall weather-app'
-                sh 'yq e .appDeployment.replicas="$REPLICA" -i /home/ec2-user/agent1/workspace/app/mychart/values.yaml'
+                sh 'yq e .appDeployment.replicas="$REPLICA" -i /home/ec2-user/agent1/workspace/app-deployment/mychart/values.yaml'
             }
         }
 
