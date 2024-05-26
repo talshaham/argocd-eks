@@ -19,7 +19,7 @@ spec:
         image: talshaham/app-weather:90
         env:
         - name: MONGO_HOST
-          value: my-release-mongodb.default.svc.cluster.local
+          value: my-mongodb.default.svc.cluster.local
 
         - name: MONGO_PORT
           value: "27017"
