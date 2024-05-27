@@ -15,10 +15,10 @@ spec:
               number: 80
         path: /
         pathType: Prefix
-#      - backend:
-#          service:
-#            name: 'weather-app-service'
-#            port:
-#              number: 80
-#        path: /static/* #for all the static files (css/images)
-#        pathType: Prefix
+      - backend:
+          service:
+            name: 'weather-app-service'
+            port:
+              number: 80
+        path: /static/* #for all the static files (css/images)
+        pathType: Prefix
