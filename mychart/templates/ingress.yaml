@@ -10,14 +10,14 @@ spec:
       paths:
       - backend:
           service:
-            name: 'weather-app-mychart-service-app'
+            name: 'weather-app-service'
             port:
               number: 80
         path: /
         pathType: Prefix
       - backend:
           service:
-            name: 'weather-app-mychart-service-app'
+            name: 'weather-app-service'
             port:
               number: 80
         path: /static/* #for all the static files (css/images)
