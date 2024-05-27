@@ -20,5 +20,5 @@ spec:
             name: 'weather-app-service'
             port:
               number: 80
-        path: /static/* #for all the static files (css/images)
-        pathType: Prefix
+#        path: /static/* #for all the static files (css/images)
+#        pathType: Prefix
