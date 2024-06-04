@@ -1,7 +1,7 @@
 pipeline {
     agent any 
     environment {     
-      REPLICA= 10
+      REPLICA= 4
     }
 
     stages {
