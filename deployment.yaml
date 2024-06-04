@@ -14,9 +14,12 @@ spec:
     spec:
       containers:
       - name: container-app-deployment
-        image: talshaham/app-weather:65
+        image: talshaham/app-weather:84
         ports:
         - containerPort: 5000
+        env:
+        - name: MONGODB_URI
+          value: "mongodb://mongodb:27017"  # Connection string for MongoDB in Minikube
 
 ---
 apiVersion: v1

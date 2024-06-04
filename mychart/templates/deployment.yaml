@@ -1,28 +1,51 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "mychart.fullname" . }}-app-deployment
+  name: weather-deployment
   labels:
-  {{- include "mychart.labels" . | nindent 4 }}
+    app: weather-app
 spec:
-  replicas: {{ .Values.appDeployment.replicas }}
+  replicas: 2
   selector:
     matchLabels:
-      app: app-deployment
-    {{- include "mychart.selectorLabels" . | nindent 6 }}
+      app: weather-app
   template:
     metadata:
       labels:
-        app: app-deployment
-      {{- include "mychart.selectorLabels" . | nindent 8 }}
+        app: weather-app
     spec:
       containers:
-      - env:
-        - name: KUBERNETES_CLUSTER_DOMAIN
-          value: {{ quote .Values.kubernetesClusterDomain }}
-        image: {{ .Values.appDeployment.containerAppDeployment.image.repository }}:{{ .Values.appDeployment.containerAppDeployment.image.tag
-          | default .Chart.AppVersion }}
-        name: container-app-deployment
-        ports:
-        - containerPort: 5000
-        resources: {}
+      - name: weather-app
+        image: talshaham/app-weather:90
+        env:
+        - name: MONGO_HOST
+          value: my-mongodb.default.svc.cluster.local
+
+        - name: MONGO_PORT
+          value: "27017"
+
+        - name: MONGODB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongo-db-secret
+              key: mongodb-root-username
+        - name: MONGODB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-db-secret
+              key: mongodb-root-password
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: weather-app-service
+  namespace: default
+spec:
+  type: ClusterIP
+  selector:
+    app: weather-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
